@@ -25,6 +25,8 @@ import AdminRTRW from "./pages/AdminRTRW";
 import TrackingLetterRequest from "./pages/LetterRequest/TrackingLetterRequest";
 
 const App = () => {
+  console.log(import.meta.env.VITE_API_URL);
+
   const getMe = useAuthStore((state) => state.getMe);
   const me = useAuthStore((state) => state.me);
   const location = useLocation();
