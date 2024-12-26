@@ -83,8 +83,8 @@ const Navbar = () => {
           <p className="text-aqua font-semibold ml-2">
             Admin{" "}
             {me?.role === "kelurahan"
-              ? me?.role.charAt(0).toUpperCase() + me?.role.slice(1)
-              : me?.role.toUpperCase()}
+              ? me?.role?.charAt(0).toUpperCase() + me?.role?.slice(1)
+              : me?.role?.toUpperCase()}
           </p>
         </div>
 

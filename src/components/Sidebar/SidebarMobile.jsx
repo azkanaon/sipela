@@ -73,8 +73,8 @@ const SidebarMobile = () => {
             <p className="font-semibold text-sm">
               Admin{" "}
               {me?.role === "kelurahan"
-                ? me?.role.charAt(0).toUpperCase() + me?.role.slice(1)
-                : me?.role.toUpperCase()}
+                ? me?.role?.charAt(0).toUpperCase() + me?.role.slice(1)
+                : me?.role?.toUpperCase()}
             </p>
           </div>
           {/* Logout */}
