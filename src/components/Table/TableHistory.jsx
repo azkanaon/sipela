@@ -4,7 +4,14 @@ import { useState } from "react";
 import { formatDate } from "../../utils/formattedData";
 
 const TableHistory = ({ dataHistory, query }) => {
-  const dataTHead = ["No", "NIK", "Nama", "Jenis Surat", "Tanggal Disetujui"];
+  const dataTHead = [
+    "No",
+    "NIK",
+    "Nama",
+    "Jenis Surat",
+    "Status",
+    "Tanggal Disetujui",
+  ];
   const [inputSearch, setInputSearch] = useState("");
   // State untuk pagination dan limitation
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,6 +47,7 @@ const TableHistory = ({ dataHistory, query }) => {
 
   const handleSearch = () => {
     query(inputSearch);
+    setCurrentPage(1);
   };
 
   return (
@@ -130,9 +138,32 @@ const TableHistory = ({ dataHistory, query }) => {
                     {data?.surat_pengantar?.jenis_surat?.nama}
                   </td>
                   <td className="border-2 border-aqua/20 px-4 py-2">
-                    {data?.tanggal_disetujui
+                    <p
+                      className={`text-sm text-center rounded-full bg-overpost border font-bold py-[1px] px-[2px] border-aqua/40 ${
+                        data?.is_deleted === true
+                          ? "text-violet-700"
+                          : data?.dokumen_pengantar !== null &&
+                            data?.dokumen_pernyataan !== null &&
+                            data?.dokumen_pengajuan !== null
+                          ? "text-aqua"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {data?.is_deleted === true
+                        ? "Dibatalkan User"
+                        : data?.dokumen_pengantar !== null &&
+                          data?.dokumen_pernyataan !== null &&
+                          data?.dokumen_pengajuan !== null
+                        ? "Diterima"
+                        : "Ditolak"}
+                    </p>
+                  </td>
+                  <td className="border-2 border-aqua/20 px-4 py-2 text-center">
+                    {data?.dokumen_pengantar !== null &&
+                    data?.dokumen_pernyataan !== null &&
+                    data?.dokumen_pengajuan !== null
                       ? formatDate(data.tanggal_disetujui)
-                      : "Tanggal Disetujui tidak diketahui"}
+                      : "-"}
                   </td>
                 </tr>
               ))

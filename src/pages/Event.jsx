@@ -123,39 +123,10 @@ const Event = () => {
                   </select>
                   <label className="text-aqua">Baris</label>
                 </div>
-                {/* SEARCH */}
-                {/* <div className="flex items-center gap-2 overflow-hidden md:w-1/2">
-                  <label className="input input-bordered flex items-center gap-2 h-10  w-full">
-                    <input
-                      type="text"
-                      className="grow font-semibold focus:outline-none placeholder:font-normal"
-                      placeholder="Cari Berdasarkan Judul"
-                      onChange={(e) => setInputSearch(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          handleSearch();
-                        }
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      className="h-4 w-4 opacity-70 cursor-pointer"
-                      onClick={handleSearch}
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </label>
-                </div> */}
 
                 <div>
                   <button
-                    className="btn bg-aqua text-overpost hover:bg-aqua/70 hover:text-aqua"
+                    className="rounded flex items-center p-2 bg-aqua font-medium transition-all text-overpost hover:scale-105 hover:bg-aqua/70 hover:text-aqua"
                     onClick={() => handleEdit()}
                   >
                     <span>

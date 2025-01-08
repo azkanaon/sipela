@@ -5,12 +5,16 @@ import CardHistory from "../components/Card/CardHistory";
 
 const LetterHistory = () => {
   const dataHistory = useDataLetter((state) => state.history);
+  const dataHistorySuccess = useDataLetter((state) => state.historySuccess);
   const getHistory = useDataLetter((state) => state.searchLetterHistory);
+  const getHistorySuccess = useDataLetter(
+    (state) => state.searchLetterHistorySuccess
+  );
 
   const [query, setQuery] = useState("");
 
   // Menghitung jumlah kemunculan tiap jenis surat
-  const countByJenisSurat = dataHistory.reduce((acc, item) => {
+  const countByJenisSurat = dataHistorySuccess.reduce((acc, item) => {
     const jenisSurat = item.surat_pengantar.jenis_surat.nama;
     acc[jenisSurat] = (acc[jenisSurat] || 0) + 1;
     return acc;
@@ -22,6 +26,10 @@ const LetterHistory = () => {
   }));
 
   const colors = ["bg-aqua", "bg-wave", "bg-glacier_blue"];
+
+  useEffect(() => {
+    getHistorySuccess();
+  }, [getHistorySuccess]);
 
   useEffect(() => {
     getHistory(query);
@@ -42,7 +50,9 @@ const LetterHistory = () => {
       </div>
 
       {/* Riwayat Pengajuan Surat */}
-      <TableHistory dataHistory={dataHistory} query={setQuery} />
+      <div className="my-4">
+        <TableHistory dataHistory={dataHistory} query={setQuery} />
+      </div>
     </div>
   );
 };

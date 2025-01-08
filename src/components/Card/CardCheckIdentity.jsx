@@ -28,8 +28,7 @@ const CardCheckIdentity = ({ detailData }) => {
     },
   ];
 
- 
-  const [catatan, setCatatan] = useState("")
+  const [catatan, setCatatan] = useState("");
 
   // State untuk melacak status centang setiap checkbox
   const [checkedItems, setCheckedItems] = useState(
@@ -53,17 +52,17 @@ const CardCheckIdentity = ({ detailData }) => {
   );
 
   const handleDecline = () => {
-    const nik = detailData && detailData.nik
-    dataDecline(nik, catatan)
+    const nik = detailData && detailData.nik;
+    dataDecline(nik, catatan);
     toast.success(
       "Nomor register berhasil ditambahkan dan dokumen telah dibuat",
       { duration: 3000 }
     );
-    setCatatan("")
+    setCatatan("");
     setTimeout(() => {
-    navigate("/registrasi-akun");
+      navigate("/registrasi-akun");
     }, 1000);
-  }
+  };
   return (
     <div>
       <Toaster />
@@ -108,7 +107,9 @@ const CardCheckIdentity = ({ detailData }) => {
                 <div className=" w-5/6">
                   <textarea
                     className="textarea textarea-bordered w-full h-52 bg-white/50 placeholder:text-overpost/70 text-overpost font-semibold"
-                    onChange={(e)=>{setCatatan(e.target.value)}}
+                    onChange={(e) => {
+                      setCatatan(e.target.value);
+                    }}
                     placeholder="Diisi jika ada perbaikan"
                   />
                 </div>
@@ -117,7 +118,10 @@ const CardCheckIdentity = ({ detailData }) => {
 
             {/* button perbaiki dan diterima */}
             <div className="flex justify-center mt-4 pb-7">
-              <button className="w-24 h-9 rounded-lg bg-ice text-aqua font-semibold hover:bg-ocean hover:text-overpost transition-all" onClick={handleDecline}>
+              <button
+                className="w-24 h-9 rounded-lg bg-ice text-aqua font-semibold hover:bg-ocean hover:text-overpost transition-all"
+                onClick={handleDecline}
+              >
                 Perbaiki
               </button>
               <button

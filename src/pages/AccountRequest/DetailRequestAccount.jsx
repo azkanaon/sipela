@@ -19,14 +19,15 @@ const DetailRequestAccount = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       setLoading(true);
-      await getDetail(id);
+      getDetail(id);
       setLoading(false);
     };
 
     fetchData();
   }, [getDetail, id]);
+  console.log(detailData);
 
   return (
     <div>
@@ -61,30 +62,28 @@ const DetailRequestAccount = () => {
           <div className="flex w-full flex-wrap justify-around mt-10 font-semibold text-overpost ">
             <div className="w-full md:w-1/2 ">
               {/* DATA DIRI USER */}
-              {detailData[0] && (
+              {detailData && (
                 <CardIdentityUser
                   setIsOpen={setIsOpen}
                   setWidthImage={setWidthImage}
                   setImageName={setImageName}
-                  detailData={detailData[0]}
+                  detailData={detailData}
                 />
               )}
 
               {/* DOKUMEN FOTO KTP DAN KK */}
-              {detailData[0] && (
+              {detailData && (
                 <CardKTPandKK
                   setIsOpen={setIsOpen}
                   setWidthImage={setWidthImage}
                   setImageName={setImageName}
-                  ktp={detailData[0]?.foto_ktp}
-                  kk={detailData[0]?.foto_kk}
+                  ktp={detailData?.foto_ktp}
+                  kk={detailData?.foto_kk}
                 />
               )}
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/3 xl:mr-30 ">
-              {detailData[0] && (
-                <CardCheckIdentity detailData={detailData[0]} />
-              )}
+            <div className="w-full md:w-1/2  xl:mr-30 ">
+              {detailData && <CardCheckIdentity detailData={detailData} />}
             </div>
           </div>
         </div>

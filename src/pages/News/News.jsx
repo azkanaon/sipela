@@ -160,7 +160,7 @@ const News = () => {
 
                 <div>
                   <button
-                    className="btn bg-aqua text-overpost hover:bg-aqua/70 hover:text-aqua"
+                    className="rounded flex items-center p-2 bg-aqua font-medium transition-all text-overpost hover:scale-105 hover:bg-aqua/70 hover:text-aqua"
                     onClick={() => handleEdit()}
                   >
                     <span>

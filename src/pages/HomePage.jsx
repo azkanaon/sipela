@@ -6,20 +6,29 @@ import { FaMailBulk } from "react-icons/fa";
 import { useUserNotVerify, useVerifyUser } from "../store/DataUser";
 import { useEffect } from "react";
 import { useAuthStore } from "../store/Auth";
+import { useDataLetter } from "../store/DataLetter";
 
 const HomePage = () => {
   const getVerifyAccount = useVerifyUser((state) => state.getVerifyAccount);
   const getNotVerifyAccount = useUserNotVerify(
     (state) => state.fetchUsersNotVerify
   );
+  const dataHistory = useDataLetter((state) => state.history);
+  const tracking = useDataLetter((state) => state.tracking);
+
   const verifyAccount = useVerifyUser((state) => state.verifyAccount);
   const notVerifyAccount = useUserNotVerify((state) => state.usersNotVerify);
+  const getHistory = useDataLetter((state) => state.searchLetterHistory);
+  const getTracking = useDataLetter((state) => state.searchLetterTracking);
+
   const me = useAuthStore((state) => state.me);
 
   useEffect(() => {
     getVerifyAccount("diterima");
     getNotVerifyAccount("belum");
-  }, [getVerifyAccount, getNotVerifyAccount]);
+    getHistory("");
+    getTracking("");
+  }, [getVerifyAccount, getNotVerifyAccount, getHistory, getTracking]);
 
   return (
     <div className="mx-12 mt-5">
@@ -57,8 +66,8 @@ const HomePage = () => {
 
         <CardHome
           title={"Surat"}
-          totalFinish={12}
-          totalProcess={190}
+          totalFinish={dataHistory.length}
+          totalProcess={tracking.length}
           icon={<FaMailBulk className="h-9 w-9 md:h-12 md:w-12" />}
           linkDone={"/riwayat-surat"}
           linkNotDone={"/pengajuan-surat"}

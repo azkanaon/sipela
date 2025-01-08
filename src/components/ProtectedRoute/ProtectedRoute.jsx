@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../../store/Auth";
 import { useEffect, useState } from "react";
-import { CgSpinner } from "react-icons/cg";
+import LoadingScreen from "../EmptyPage/LoadingScreen";
 
 const ProtectedRoute = ({ children }) => {
   const me = useAuthStore((state) => state.me);
@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div>
-        <CgSpinner className="animate-spin" />
+        <LoadingScreen />
       </div>
     ); // Atau gunakan spinner atau komponen lain
   }

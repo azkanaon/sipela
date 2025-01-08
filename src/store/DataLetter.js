@@ -10,6 +10,7 @@ export const useDataLetter = create((set) => ({
   uploadRegister: [],
   dataDetailRegister: {},
   history: [],
+  historySuccess: [],
   tracking: [],
   getAllLetters: async () => {
     try {
@@ -92,16 +93,20 @@ export const useDataLetter = create((set) => ({
       );
 
       const { data } = response;
-      console.log(data);
+
       const dataUpdate = data.filter((dat) => {
         return (
-          dat.surat_pengantar.nomor_register_pengantar_rt === null ||
-          dat.surat_pengantar.nomor_register_pengantar_rw === null ||
-          dat.surat_pengantar.nomor_register_pengantar_kelurahan === null
+          dat.is_deleted === false &&
+          dat.status_rt !== "Ditolak" &&
+          dat.status_rw !== "Ditolak" &&
+          dat.status_kelurahan !== "Ditolak" &&
+          (dat.surat_pengantar.nomor_register_pengantar_rt === null ||
+            dat.surat_pengantar.nomor_register_pengantar_rw === null ||
+            dat.surat_pengantar.nomor_register_pengantar_kelurahan === null)
         );
       });
-      console.log(dataUpdate);
 
+      console.log(dataUpdate);
       set({ tracking: dataUpdate });
     } catch (error) {
       console.log("Error woy", error.message);
@@ -124,12 +129,43 @@ export const useDataLetter = create((set) => ({
       const { data } = response;
       const dataUpdate = data.filter((dat) => {
         return (
+          (dat.dokumen_pengantar !== null &&
+            dat.dokumen_pernyataan !== null &&
+            dat.dokumen_pengajuan !== null) ||
+          dat.status_kelurahan === "Ditolak" ||
+          dat.status_rt === "Ditolak" ||
+          dat.status_rw === "Ditolak" ||
+          dat.is_deleted === true
+        );
+      });
+      set({ history: dataUpdate });
+    } catch (error) {
+      console.log("Error woy", error.message);
+    }
+  },
+
+  searchLetterHistorySuccess: async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `${api_url}/pengajuan/search/query?query=`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const { data } = response;
+      const dataUpdate = data.filter((dat) => {
+        return (
           dat.dokumen_pengantar !== null &&
           dat.dokumen_pernyataan !== null &&
           dat.dokumen_pengajuan !== null
         );
       });
-      set({ history: dataUpdate });
+      set({ historySuccess: dataUpdate });
     } catch (error) {
       console.log("Error woy", error.message);
     }

@@ -7,10 +7,10 @@ const CardKTPandKK = ({ setIsOpen, setWidthImage, setImageName, ktp, kk }) => {
     setImageName(imageName);
   };
   return (
-    <div>
+    <div className="">
       <div className="mt-10">
         <h3 className="font-bold text-2xl text-aqua mb-3">Dokumen Terlampir</h3>
-        <div className="w-full lg:w-[70%] bg-aqua md:rounded-xl md:h-64 flex items-center justify-center overflow-hidden pt-4">
+        <div className="w-full lg:w-4/5 bg-aqua md:rounded-xl md:h-64 flex items-center justify-center overflow-hidden pt-4">
           <div className="w-full flex flex-col md:flex-row items-center md:items-baseline md:justify-around">
             <div className="md:my-4">
               <div className="w-56 h-32 absolute bg-black/60 opacity-0 transition-all duration-300 hover:opacity-100 rounded-lg">

@@ -12,7 +12,7 @@ const CardIdentityUser = ({
     setImageName(detailData?.foto_selfie);
   };
   return (
-    <div className="">
+    <div>
       <h1 className="text-aqua font-bold ml-4 text-2xl mb-2 lg:hidden ">
         Identitas
       </h1>
@@ -33,7 +33,7 @@ const CardIdentityUser = ({
             <div className="">
               <img
                 src={detailData?.foto_selfie}
-                alt="imgProfile"
+                alt="foto profile"
                 className="w-24 md:w-36 lg:w-48 h-36 md:h-48 lg:h-72  object-cover object-center rounded-lg"
               />
             </div>

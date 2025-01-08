@@ -21,8 +21,8 @@ const CardHistory = ({ name, jumlah, color }) => {
             </svg>
           </div>
           <div>
-            <div className="text-sm font-bold">{name}</div>
-            <div className="text-xl font-bold mt-1">
+            <div className="text-sm ">{name}</div>
+            <div className="lg:text-xl font-medium mt-1">
               Jumlah Surat Selesai : {jumlah}
             </div>
           </div>
