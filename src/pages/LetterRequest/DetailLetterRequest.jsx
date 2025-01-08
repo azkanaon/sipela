@@ -62,7 +62,6 @@ const DetailLetterRequest = () => {
 
   const namaSurat = detailData[0]?.surat_pengantar?.jenis_surat?.nama;
   const SuratComponent = suratComponents[namaSurat];
-  // console.log(detailData[0]);
 
   const groupedData =
     detailData[0]?.surat_pengantar?.jenis_surat?.persyaratan.reduce(

@@ -27,7 +27,6 @@ const DetailRequestAccount = () => {
 
     fetchData();
   }, [getDetail, id]);
-  console.log(detailData);
 
   return (
     <div>

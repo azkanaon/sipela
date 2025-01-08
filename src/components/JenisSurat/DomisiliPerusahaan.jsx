@@ -6,8 +6,6 @@ const DomisiliPerusahaan = ({ detailData, groupedData }) => {
   const domisili_perusahaan =
     detailData[0]?.surat_pengantar?.domisili_perusahaan[0];
 
-  console.log(domisili_perusahaan);
-
   return (
     <div>
       <div className="w-full rounded-md overflow-hidden mb-10">

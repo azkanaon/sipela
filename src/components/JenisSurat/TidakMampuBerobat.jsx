@@ -6,8 +6,6 @@ const TidakMampuBerobat = ({ detailData, groupedData }) => {
   const tidak_mampu_berobat =
     detailData[0]?.surat_pengantar?.tidak_mampu_berobat[0];
 
-  console.log(tidak_mampu_berobat);
-
   return (
     <div>
       <div className="w-full rounded-md overflow-hidden mb-10">

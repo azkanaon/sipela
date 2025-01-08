@@ -74,7 +74,6 @@ export const useDataNews = create((set) => ({
       );
 
       const { data: newNews } = response;
-      // console.log(newNews);
       set((state) => ({
         news: state.news.map((item) => (item.id === id ? newNews : item)),
       }));

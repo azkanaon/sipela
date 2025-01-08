@@ -5,8 +5,6 @@ import { formatDateWithoutDay } from "../../utils/formattedData";
 const KurangPbb = ({ detailData, groupedData }) => {
   const kurang_pbb = detailData[0]?.surat_pengantar?.kurang_pbb[0];
 
-  console.log(kurang_pbb);
-
   return (
     <div>
       <div className="w-full rounded-md overflow-hidden mb-10">

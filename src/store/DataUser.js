@@ -32,7 +32,6 @@ export const useUserNotVerify = create((set) => ({
   updateDecline: async (id, catatan) => {
     try {
       const token = localStorage.getItem("token");
-      // console.log("ayam")
       await axios.patch(
         `${api_url}/user/ditolak/${id}`,
         {

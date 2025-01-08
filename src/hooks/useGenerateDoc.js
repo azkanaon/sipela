@@ -49,7 +49,6 @@ export const generateDocuments = async (data, documentConfigs) => {
       // Validate data based on document type
       const validatedData =
         index === 0 ? validateData(data) : validateData(data.surat_pengantar);
-      // console.log(validatedData);
 
       // Load template
       const content = await loadTemplate(docConfig.templateFile);

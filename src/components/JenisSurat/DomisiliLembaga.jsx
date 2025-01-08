@@ -5,8 +5,6 @@ import { formatDateWithoutDay } from "../../utils/formattedData";
 const DomisiliLembaga = ({ detailData, groupedData }) => {
   const domisili_lembaga = detailData[0]?.surat_pengantar?.domisili_lembaga[0];
 
-  console.log(domisili_lembaga);
-
   return (
     <div>
       <div className="w-full rounded-md overflow-hidden mb-10">

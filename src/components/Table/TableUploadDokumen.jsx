@@ -65,7 +65,6 @@ const TableUploadDokumen = ({ dataUpload }) => {
           suratPengantarFile: file,
         },
       }));
-      // console.log("Upload Surat Pengantar for ID:", rowId, file);
     } else {
       alert("Hanya file PDF atau DOCX yang diizinkan");
       e.target.value = null;
@@ -89,7 +88,6 @@ const TableUploadDokumen = ({ dataUpload }) => {
           suratPengajuanFile: file,
         },
       }));
-      // console.log("Upload Surat Pengajuan for ID:", rowId, file);
     } else {
       alert("Hanya file PDF atau DOCX yang diizinkan");
       e.target.value = null;

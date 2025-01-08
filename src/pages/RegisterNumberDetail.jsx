@@ -50,8 +50,6 @@ const RegisterNumberDetail = () => {
     return <p>Loading...</p>;
   }
 
-  // console.log(letters[0]);
-
   return (
     <div>
       <Toaster />

@@ -4,7 +4,6 @@ import { formatDate, formatDateWithoutDay } from "../../utils/formattedData";
 
 const KematianSetelah30Hari = ({ detailData, groupedData }) => {
   const mati_lebih_30hari = detailData[0]?.surat_pengantar.mati_lebih_30hari[0];
-  console.log(mati_lebih_30hari);
 
   return (
     <div>

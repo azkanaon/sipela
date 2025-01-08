@@ -106,7 +106,6 @@ export const useDataLetter = create((set) => ({
         );
       });
 
-      console.log(dataUpdate);
       set({ tracking: dataUpdate });
     } catch (error) {
       console.log("Error woy", error.message);
@@ -263,7 +262,6 @@ export const useDataLetter = create((set) => ({
       const { data } = response;
 
       set({ dataDetailRegister: data });
-      // console.log("ikanasin")
     } catch (error) {
       console.log("Error woy", error.message);
     }
@@ -309,7 +307,7 @@ export const useDataLetter = create((set) => ({
       return response.data;
     } catch (error) {
       console.log("Error uploading documents", error.message);
-      throw error; // Re-throw to allow error handling in the component
+      throw error;
     }
   },
 }));
