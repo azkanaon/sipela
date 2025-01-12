@@ -29,6 +29,7 @@ const App = () => {
   const me = useAuthStore((state) => state.me);
   const location = useLocation();
   const [is404, setIs404] = useState(false); // State untuk cek halaman 404
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
     // Daftar rute yang valid (tanpa rute dinamis)
@@ -83,6 +84,15 @@ const App = () => {
       setIs404(false);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     getMe();
@@ -191,14 +201,7 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="/chat-langsung"
-                element={
-                  <ProtectedRoute>
-                    <LiveChat />
-                  </ProtectedRoute>
-                }
-              />
+
               <Route
                 path="/berita"
                 element={
@@ -223,14 +226,7 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="/lacak-surat"
-                element={
-                  <ProtectedRoute>
-                    <TrackingLetterRequest />
-                  </ProtectedRoute>
-                }
-              />
+
               <Route
                 path="/registrasi-akun/:id"
                 element={
@@ -239,6 +235,26 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
+              {isLargeScreen && (
+                <>
+                  <Route
+                    path="/chat-langsung"
+                    element={
+                      <ProtectedRoute>
+                        <LiveChat />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/lacak-surat"
+                    element={
+                      <ProtectedRoute>
+                        <TrackingLetterRequest />
+                      </ProtectedRoute>
+                    }
+                  />
+                </>
+              )}
             </>
           )}
 

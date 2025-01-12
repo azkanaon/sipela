@@ -10,7 +10,7 @@ const NotFound = () => {
           Halaman Tidak Ditemukan
         </h4>
         <a href="/" className="mt-4">
-          <button className="btn">Kembali Ke HomePage</button>
+          <button className="btn">Kembali Ke Home Page</button>
         </a>
       </div>
     </div>

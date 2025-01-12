@@ -10,7 +10,7 @@ import { useAuthStore } from "../../store/Auth";
 
 const SidebarMobile = () => {
   const me = useAuthStore((state) => state.me);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -20,7 +20,7 @@ const SidebarMobile = () => {
   return (
     <div
       className={cn(
-        ` relative h-screen w-72 bg-ocean text-overpost transition-all duration-300 overscroll-y-auto`,
+        ` relative h-screen w-72 bg-ocean text-overpost transition-all duration-300`,
         !isOpen && "w-0"
       )}
     >
@@ -37,7 +37,7 @@ const SidebarMobile = () => {
           </p>
         </div>
       </div>
-      <div className="pl-3 pt-5 flex flex-col justify-between h-full">
+      <div className="pl-3 pt-5 flex flex-col justify-between h-full overflow-hidden">
         <div>
           {/* Logo */}
           <div
@@ -66,7 +66,7 @@ const SidebarMobile = () => {
           {/* Profile */}
           <div className="flex items-center">
             <img
-              src="https://via.placeholder.com/32"
+              src="https://www.puskomedia.id/wp-content/uploads/2016/08/gedung-isola-upi-220830_1024x675.jpg"
               alt="Profile"
               className="rounded-full w-8 h-8 mr-2"
             />

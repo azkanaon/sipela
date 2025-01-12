@@ -98,7 +98,7 @@ const PopupEvent = ({ handleOpen }) => {
           </div>
           {/* title */}
           <h1 className="text-aqua text-xl text-center font-bold my-4">
-            Tambah Berita
+            Tambah Event
           </h1>
 
           {/* Form */}
@@ -107,11 +107,14 @@ const PopupEvent = ({ handleOpen }) => {
             <div className="flex flex-col w-11/12  ">
               {/* Gambar */}
               <div className="mb-4">
-                <label htmlFor="" className="font-bold text-aqua text-lg mb-2">
+                <label
+                  htmlFor=""
+                  className="font-medium lg:font-bold text-aqua text-base lg:text-lg mb-2"
+                >
                   Gambar
                 </label>
                 <div
-                  className="w-full h-52 flex items-center justify-center rounded-lg  border-2 border-dashed border-warm_grey cursor-pointer overflow-hidden"
+                  className="w-full h-32 lg:h-52 flex items-center justify-center rounded-lg  border-2 border-dashed border-warm_grey cursor-pointer overflow-hidden"
                   onClick={() => {
                     fileRef.current.click();
                   }}
@@ -126,18 +129,18 @@ const PopupEvent = ({ handleOpen }) => {
                     required
                   />
                   {previewImage ? (
-                    <div className="flex gap-12">
+                    <div className="flex gap-4 lg:gap-12">
                       <div>
                         <img
                           src={previewImage}
                           alt="Preview"
                           onLoad={handleImageLoad}
-                          className={`h-44 w-80 ${imageClass} object-center rounded-lg my-10 border-2 border-aqua`}
+                          className={`h-28 lg:h-44 w-40 lg:w-80 ${imageClass} object-center rounded-lg my-10 border border-aqua/20`}
                         />
                       </div>
                       <div className="flex justify-center items-center">
-                        <p className="text-warm_grey font-bold cursor-pointer flex flex-col items-center">
-                          <MdOutlineChangeCircle className="w-8 h-8 " />
+                        <p className="text-warm_grey font-medium lg:font-bold cursor-pointer flex flex-col items-center ">
+                          <MdOutlineChangeCircle className="h-6 w-6  lg:w-8 lg:h-8 " />
                           Ubah Foto
                         </p>
                       </div>
@@ -145,8 +148,10 @@ const PopupEvent = ({ handleOpen }) => {
                   ) : (
                     // Display placeholder if no image is selected
                     <div className="flex items-center justify-center flex-col text-warm_grey">
-                      <MdOutlineFileUpload className="h-12 w-12" />
-                      <p className="font-bold">Upload Foto Disini</p>
+                      <MdOutlineFileUpload className=" h-8 w-8 lg:h-12 lg:w-12" />
+                      <p className="font-medium lg:font-bold">
+                        Upload Foto Disini
+                      </p>
                     </div>
                   )}
                 </div>
@@ -155,7 +160,7 @@ const PopupEvent = ({ handleOpen }) => {
               {/* Button Tambah */}
               <div className="mb-4">
                 <button
-                  className="btn w-full bg-aqua text-white hover:bg-aqua/70"
+                  className="py-2 lg:py-3 text-sm lg:text-base rounded-md font-semibold w-full bg-aqua text-white transition-all hover:bg-aqua/70"
                   onClick={handleSubmit}
                   disabled={!isFull}
                 >

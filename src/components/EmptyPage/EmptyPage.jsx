@@ -36,7 +36,7 @@ const EmptyPage = () => {
     // Jika rute tidak valid, dianggap halaman 404
     if (!isUnaccessRoute && !isUnacessDynamicRoute) {
       setIsAccessible(true);
-      console.log("Halaman tidak ditemukan, ini adalah halaman 404.");
+      console.log("Halaman tidak ditemukan, ini adalah halaman error 404.");
     } else {
       setIsAccessible(false);
     }

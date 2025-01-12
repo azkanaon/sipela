@@ -23,6 +23,8 @@ const SidebarMenu = () => {
   const countNotif = useNotificationStore((state) => state.countNotif);
   const getCountNotif = useNotificationStore((state) => state.getCountNotif);
 
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
   const dropdownMenu = [
     {
       label: "Pengajuan Surat",
@@ -31,6 +33,7 @@ const SidebarMenu = () => {
       isRT: true,
       isRW: true,
       isKelurahan: true,
+      isDesktop: true,
     },
     {
       label: "Nomor Register",
@@ -39,6 +42,7 @@ const SidebarMenu = () => {
       isRT: true,
       isRW: true,
       isKelurahan: true,
+      isDesktop: true,
     },
     {
       label: "Lacak Surat",
@@ -47,6 +51,7 @@ const SidebarMenu = () => {
       isRT: false,
       isRW: false,
       isKelurahan: true,
+      isDesktop: isLargeScreen,
     },
     {
       label: "Registrasi Akun",
@@ -55,6 +60,7 @@ const SidebarMenu = () => {
       isRT: false,
       isRW: false,
       isKelurahan: true,
+      isDesktop: true,
     },
     {
       label: "Reset Password",
@@ -63,6 +69,7 @@ const SidebarMenu = () => {
       isRT: false,
       isRW: false,
       isKelurahan: true,
+      isDesktop: true,
     },
   ];
 
@@ -75,6 +82,15 @@ const SidebarMenu = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     getCountNotif();
@@ -96,7 +112,7 @@ const SidebarMenu = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `font-semibold rounded-l-2xl py-3 pl-2 flex items-center ${
+          `font-semibold rounded-l-2xl py-2 lg:py-3 pl-2 flex items-center ${
             isActive ? "bg-aqua" : "hover:bg-aqua"
           }`
         }
@@ -142,7 +158,9 @@ const SidebarMenu = () => {
                     isActive ? "bg-aqua" : "hover:bg-aqua"
                   } ${me?.role === "rt" && !item.isRT && "hidden"} ${
                     me?.role === "kelurahan" && !item.isKelurahan && "hidden"
-                  } ${me?.role === "rw" && !item.isRW && "hidden"}`
+                  } ${me?.role === "rw" && !item.isRW && "hidden"} ${
+                    !item.isDesktop && "hidden"
+                  }`
                 }
               >
                 <p className="text-md py-1 flex pl-4 items-center">
@@ -154,8 +172,25 @@ const SidebarMenu = () => {
           </div>
         }
       </div>
+      <NavLink
+        to="/notifikasi"
+        className={({ isActive }) =>
+          `md:hidden font-semibold rounded-l-2xl py-3 mt-2 pl-2 flex items-center relative  ${
+            isActive ? "bg-aqua" : "hover:bg-aqua"
+          }`
+        }
+      >
+        <span
+          className={`absolute top-2 left-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs ${
+            totalNotif === 0 ? "hidden" : ""
+          }`}
+        >
+          {totalNotif}
+        </span>
+        <IoNotifications size={24} className="mr-2" />
+        Notifikasi
+      </NavLink>
 
-      {/* Menu Lain */}
       {me?.role === "kelurahan" && (
         <>
           <NavLink
@@ -194,17 +229,19 @@ const SidebarMenu = () => {
             Riwayat
           </NavLink>
 
-          <NavLink
-            to="/chat-langsung"
-            className={({ isActive }) =>
-              `font-semibold rounded-l-2xl py-3 mt-2 pl-2 flex items-center ${
-                isActive ? "bg-aqua" : "hover:bg-aqua"
-              }`
-            }
-          >
-            <IoChatboxOutline size={24} className="mr-2" />
-            Live Chat
-          </NavLink>
+          {isLargeScreen && (
+            <NavLink
+              to="/chat-langsung"
+              className={({ isActive }) =>
+                `font-semibold rounded-l-2xl py-3 mt-2 pl-2 flex items-center ${
+                  isActive ? "bg-aqua" : "hover:bg-aqua"
+                }`
+              }
+            >
+              <IoChatboxOutline size={24} className="mr-2" />
+              Live Chat
+            </NavLink>
+          )}
 
           <NavLink
             to="/admin-rt-rw"
@@ -219,25 +256,6 @@ const SidebarMenu = () => {
           </NavLink>
         </>
       )}
-
-      <NavLink
-        to="/notifikasi"
-        className={({ isActive }) =>
-          `md:hidden font-semibold rounded-l-2xl py-3 mt-2 pl-2 flex items-center relative  ${
-            isActive ? "bg-aqua" : "hover:bg-aqua"
-          }`
-        }
-      >
-        <span
-          className={`absolute top-2 left-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs ${
-            totalNotif === 0 ? "hidden" : ""
-          }`}
-        >
-          {totalNotif}
-        </span>
-        <IoNotifications size={24} className="mr-2" />
-        Notifikasi
-      </NavLink>
     </div>
   );
 };

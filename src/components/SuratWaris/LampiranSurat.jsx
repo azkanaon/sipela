@@ -49,7 +49,7 @@ const LampiranSurat = ({ data, title }) => {
                   id="pdfLink"
                   target="_blank"
                 >
-                  {dat.nama}
+                  {dat.file_path}
                 </a>
               ) : (
                 <div

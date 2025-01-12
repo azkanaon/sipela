@@ -7,14 +7,16 @@ import TableUploadDokumen from "../components/Table/TableUploadDokumen";
 const RegisterNumber = () => {
   const letters = useDataLetter((state) => state.dataRegister);
   const getData = useDataLetter((state) => state.getRegisterNumber);
+  const me = useAuthStore((state) => state.me);
   const dataUpload = useDataLetter((state) => state.uploadRegister);
   const getUpload = useDataLetter((state) => state.getUploadDokumenRegister);
-  const me = useAuthStore((state) => state.me);
 
   useEffect(() => {
     getData();
-    getUpload();
-  }, [getData, getUpload]);
+    if (me.role === "kelurahan") {
+      getUpload();
+    }
+  }, [getData, getUpload, me]);
 
   return (
     <div className="px-4 lg:px-12 mt-5 overflow-x-auto w-screen md:w-full h-screen sm:h-fit">

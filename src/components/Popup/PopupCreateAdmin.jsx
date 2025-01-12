@@ -80,7 +80,7 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
           </div>
           {/* title */}
           <h1 className="text-aqua text-xl text-center font-bold my-4">
-            {selectedAdmin ? "Update" : "Tambah"} Berita
+            {selectedAdmin ? "Update" : "Tambah"} Admin RT / RW
           </h1>
 
           {/* Form */}
@@ -88,17 +88,17 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
             {/* input title */}
             <div className="flex flex-col w-11/12  ">
               {/* Username */}
-              <div className="mb-4">
+              <div className="mmb-2 lg:mb-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor=""
-                    className="font-bold text-aqua text-lg mb-2"
+                    className="font-medium lg:font-bold text-aqua text-base lg:text-lg lg:mb-2"
                   >
                     Username
                   </label>
                   <input
                     type="text"
-                    className="input font-semibold focus:outline-none placeholder:font-semibold"
+                    className="px-2 py-2 lg:px-3 rounded-md text-sm lg:text-base font-medium lg:font-semibold focus:outline-none placeholder:font-normal placeholder:text-sm placeholder:lg:text-base placeholder:tracking-wide"
                     placeholder="Ketikkan Username"
                     value={username}
                     onChange={(e) => {
@@ -110,17 +110,17 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
               </div>
 
               {/* Password */}
-              <div className="mb-4">
+              <div className="mb-2 lg:mb-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor=""
-                    className="font-bold text-aqua text-lg mb-2"
+                    className="font-medium lg:font-bold text-aqua text-base lg:text-lg lg:mb-2"
                   >
                     Password
                   </label>
                   <input
                     type="password"
-                    className="input font-semibold focus:outline-none placeholder:font-semibold"
+                    className="px-2 py-2 lg:px-3 rounded-md text-sm lg:text-base font-medium lg:font-semibold focus:outline-none placeholder:font-normal placeholder:text-sm placeholder:lg:text-base placeholder:tracking-wide"
                     placeholder={
                       selectedAdmin
                         ? "Masukkan Password Baru"
@@ -136,17 +136,17 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
               </div>
 
               {/* Role */}
-              <div className="mb-4">
+              <div className="mb-2 lg:mb-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor="role"
-                    className="font-bold text-aqua text-lg mb-2"
+                    className="font-medium lg:font-bold text-aqua text-base lg:text-lg lg:mb-2"
                   >
                     Role
                   </label>
                   <select
                     id="role"
-                    className="input font-semibold focus:outline-none placeholder:font-semibold  cursor-pointer disabled:bg-white disabled:text-aqua"
+                    className="px-2 py-2 lg:px-3 rounded-md text-sm lg:text-base font-medium lg:font-semibold focus:outline-none placeholder:font-normal placeholder:text-sm placeholder:lg:text-base placeholder:tracking-wide cursor-pointer disabled:bg-white disabled:text-aqua"
                     value={role}
                     onChange={(e) => {
                       setRole(e.target.value);
@@ -168,18 +168,18 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
               </div>
 
               {/* RT */}
-              <div className="mb-4">
+              <div className="mb-2 lg:mb-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor=""
-                    className="font-bold text-aqua text-lg mb-2"
+                    className="font-medium lg:font-bold text-aqua text-base lg:text-lg lg:mb-2"
                   >
                     RT
                   </label>
                   <input
                     type="text"
-                    className="input font-semibold focus:outline-none placeholder:font-semibold"
-                    placeholder="Ketikkan Username"
+                    className="px-2 py-2 lg:px-3 rounded-md text-sm lg:text-base font-medium lg:font-semibold focus:outline-none placeholder:font-normal placeholder:text-sm placeholder:lg:text-base placeholder:tracking-wide"
+                    placeholder="RT"
                     value={rt}
                     maxLength={2}
                     onChange={(e) => {
@@ -196,14 +196,14 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
                 <div className="flex flex-col">
                   <label
                     htmlFor=""
-                    className="font-bold text-aqua text-lg mb-2"
+                    className="font-medium lg:font-bold text-aqua text-base lg:text-lg lg:mb-2"
                   >
                     RW
                   </label>
                   <input
                     type="text"
-                    className="input font-semibold focus:outline-none placeholder:font-semibold"
-                    placeholder="Ketikkan Username"
+                    className="px-2 py-2 lg:px-3 rounded-md text-sm lg:text-base font-medium lg:font-semibold focus:outline-none placeholder:font-normal placeholder:text-sm placeholder:lg:text-base placeholder:tracking-wide"
+                    placeholder="Ketikkan RW"
                     value={rw}
                     onChange={(e) => {
                       setRW(e.target.value);
@@ -218,7 +218,7 @@ const PopupCreateAdmin = ({ handleOpen, selectedAdmin }) => {
               {/* Button Tambah */}
               <div className="mb-4">
                 <button
-                  className="btn w-full bg-aqua text-white hover:bg-aqua/70"
+                  className="py-2 lg:py-3 text-sm lg:text-base rounded-md font-semibold w-full bg-aqua text-white transition-all hover:bg-aqua/70"
                   onClick={handleSubmit}
                   disabled={!isFull}
                 >
