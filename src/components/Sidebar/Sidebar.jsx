@@ -22,7 +22,7 @@ const Sidebar = () => {
       <div className="bg-red-600">
         <div
           className={cn(
-            `fixed top-32 cursor-pointer transition-all duration-300`,
+            `fixed top-20 cursor-pointer transition-all duration-300`,
             isOpen ? "left-[260px]" : "left-2"
           )}
         >

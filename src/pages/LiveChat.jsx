@@ -53,7 +53,7 @@ const LiveChat = () => {
     <div className="flex h-[calc(100vh-4rem)] bg-gray-100">
       {/* Left sidebar */}
       <div className="w-72 bg-white border-r">
-        <div className="flex gap-2 p-4 border-b">
+        <div className="flex gap-2 p-4 border-b justify-center">
           <h2 className="text-aqua font-bold text-2xl">Chat</h2>
         </div>
 
@@ -66,7 +66,7 @@ const LiveChat = () => {
               className={`relative flex items-center gap-3 p-4  cursor-pointer border-b
                 ${
                   userSelected === user.id_user
-                    ? "bg-ocean hover:bg-ocean text-overpost"
+                    ? "bg-teal-700 hover:bg-ocean text-overpost"
                     : "hover:bg-ocean/20"
                 }
               `}
