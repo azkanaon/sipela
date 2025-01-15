@@ -44,7 +44,7 @@ const Sidebar = () => {
           )}
         >
           <img src={Logo} alt="#logo" className="w-24" />
-          <h1 className="text-4xl font-bold ml-4">ISOLA</h1>
+          <h1 className="text-4xl font-bold ml-4">SiLeLa</h1>
         </div>
         {/* Menu */}
         <div

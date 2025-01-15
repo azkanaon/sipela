@@ -47,7 +47,7 @@ const SidebarMobile = () => {
             )}
           >
             <img src={Logo} alt="#logo" className="w-24" />
-            <h1 className="text-4xl font-bold ml-4">ISOLA Mobile</h1>
+            <h1 className="text-4xl font-bold ml-4">SiLeLa Mobile</h1>
           </div>
           {/* Menu */}
           <div

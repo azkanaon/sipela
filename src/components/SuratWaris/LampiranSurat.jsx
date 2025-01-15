@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopupImage from "../Popup/PopupImage";
 
 const LampiranSurat = ({ data, title }) => {
   const [imageClass, setImageClass] = useState("h-96");
   const [isOpen, setIsOpen] = useState(false);
   const [imageName, setImageName] = useState(""); // Tambahkan state untuk imageName
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
   const handleImageLoad = (event) => {
     const img = event.target;
@@ -16,10 +17,20 @@ const LampiranSurat = ({ data, title }) => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleImageClick = (filePath) => {
     setImageName(filePath); // Set imageName dengan filePath
     setIsOpen(true); // Buka popup
   };
+
   return (
     <div>
       {isOpen && (
@@ -56,19 +67,26 @@ const LampiranSurat = ({ data, title }) => {
                   className="cursor-pointer"
                   onClick={() => handleImageClick(dat.file_path)}
                 >
-                  <div
-                    className={`absolute w-80 ${imageClass} opacity-0 transition-all hover:opacity-100 hover:bg-black/50`}
-                  >
-                    <p className="h-full flex items-center justify-center">
-                      Zoom Foto
-                    </p>
-                  </div>
+                  {isLargeScreen && (
+                    <div
+                      className={`absolute w-80 ${imageClass} rounded-md opacity-0 transition-all hover:opacity-100 hover:bg-black/50`}
+                    >
+                      <p className="h-full flex items-center justify-center text-white font-medium">
+                        Zoom Foto
+                      </p>
+                    </div>
+                  )}
                   <img
                     onLoad={handleImageLoad}
                     src={dat.file_path}
                     alt={"Image"} // Tambahkan alt yang lebih deskriptif
-                    className={`w-80 ${imageClass} object-cover object-center border-2 border-dotted border-aqua`}
+                    className={`w-80 ${imageClass} object-cover object-center rounded-md border border-aqua/70`}
                   />
+                  {!isLargeScreen && (
+                    <div className="text-red-400 text-xs font-medium mt-1 text-center">
+                      Klik untuk memperbesar gambar
+                    </div>
+                  )}
                 </div>
               )}
             </div>
